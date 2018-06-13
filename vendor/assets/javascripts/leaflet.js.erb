@@ -6,13 +6,16 @@
 
 L.Icon.Default = L.Icon.Default.extend({
   _getIconUrl: function (name) {
-    debugger
     var paths = <%= Hash[icons.map{|i| [i, asset_path('marker-' + i)]}].to_json %>;
     return paths[name + '.png'];
   },
 
   _detectIconPath: function () {
     return '';
+  },
+
+  _foo: function() {
+    console.log("foo")
   }
 });
 L.Marker = L.Marker.extend({
