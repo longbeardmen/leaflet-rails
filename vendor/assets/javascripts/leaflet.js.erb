@@ -2,20 +2,15 @@
 //= depend_on_asset "marker-shadow.png"
 //= depend_on_asset "marker-icon.png"
 //= require leaflet-src
-<% icons = ['icon-2x.png', 'shadow.png', 'icon.png', 'foo.png'] %>
 
 L.Icon.Default = L.Icon.Default.extend({
   _getIconUrl: function (name) {
-    var paths = <%= Hash[icons.map{|i| [i, asset_path('marker-' + i)]}].to_json %>;
+    var paths = {'icon-2x.png': 'icon-2x.png', 'shadow.png': 'shadow.png', 'icon.png': 'icon.png'};
     return paths[name + '.png'];
   },
 
   _detectIconPath: function () {
     return '';
-  },
-
-  _foo: function() {
-    console.log("foo")
   }
 });
 L.Marker = L.Marker.extend({
